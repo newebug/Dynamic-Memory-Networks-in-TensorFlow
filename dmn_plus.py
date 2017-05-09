@@ -251,12 +251,12 @@ class DMN_PLUS(object):
          
         # input fusion module
         with tf.variable_scope("question", initializer=tf.contrib.layers.xavier_initializer()):
-            print '==> get question representation'
+            print('==> get question representation')
             q_vec = self.get_question_representation(embeddings)
          
 
         with tf.variable_scope("input", initializer=tf.contrib.layers.xavier_initializer()):
-            print '==> get input representation'
+            print('==> get input representation')
             fact_vecs = self.get_input_representation(embeddings)
 
         # keep track of attentions for possible strong supervision
@@ -264,14 +264,14 @@ class DMN_PLUS(object):
 
         # memory module
         with tf.variable_scope("memory", initializer=tf.contrib.layers.xavier_initializer()):
-            print '==> build episodic memory'
+            print('==> build episodic memory')
 
             # generate n_hops episodes
             prev_memory = q_vec
 
             for i in range(self.config.num_hops):
                 # get a new episode
-                print '==> generating episode', i
+                print('==> generating episode', i)
                 episode = self.generate_episode(prev_memory, q_vec, fact_vecs, i)
 
                 # untied weights for memory update
