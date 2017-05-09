@@ -268,8 +268,10 @@ def load_babi(config, split_sentences=False):
 
     print('==> get train inputs')
     train_data = process_input(babi_train_raw, config.floatX, word2vec, vocab, ivocab, config.embed_size, split_sentences)
+    print('train_data.shape: ', np.array(train_data).shape, np.array(train_data[0]).shape, np.array(train_data[1]).shape, np.array(train_data[2]).shape, np.array(train_data[3]).shape)
     print('==> get test inputs')
     test_data = process_input(babi_test_raw, config.floatX, word2vec, vocab, ivocab, config.embed_size, split_sentences)
+    print('test_data.shape: ', np.array(test_data).shape, np.array(test_data[0]).shape, np.array(test_data[1]).shape, np.array(test_data[2]).shape, np.array(test_data[3]).shape)
 
     if config.word2vec_init:
         assert config.embed_size == 100
